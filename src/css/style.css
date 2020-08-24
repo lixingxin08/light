@@ -1,0 +1,29 @@
+#bg{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, #00001e, #000737, #001f7f, #002daf);
+}
+#cbox{
+    width: 80%;
+    margin: 0 auto;
+}
+.flex_f{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.flex_fs{
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+}
+.flex_a{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.flex_b{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
