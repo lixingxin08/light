@@ -27,3 +27,13 @@
     justify-content: space-between;
     align-items: center;
 }
+.table_list{
+    background-color: #fff!important;
+    color: #666666;
+}
+/* .ant-table-thead > tr > th {
+    white-space: nowrap !important;
+    background: #1890FF !important;
+    color: #fff!important;
+    border-bottom: 1px solid #e8e8e8!important;
+  } */

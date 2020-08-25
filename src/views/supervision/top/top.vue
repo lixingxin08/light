@@ -33,6 +33,7 @@
   height: 1rem;
   font-size: 30px;
   line-height: 1rem;
+  margin-right: 20px;
 }
 .top_r {
   width: 100%;
