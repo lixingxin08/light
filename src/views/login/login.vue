@@ -31,7 +31,7 @@
         </div>
         <div class="login_item">
           <input type="text" placeholder="请输入验证码" maxlength="6" v-model="form.code" />
-          <verify @isCode='getcode'></verify>
+          <verify @isCode="getcode"></verify>
           <div class="tips" v-if="tiptype==5">{{tip}}</div>
         </div>
         <div class="login_item submit" @click="login()">登录</div>
@@ -41,9 +41,9 @@
 </template>
 <script>
 import verify from "../../components/verify/verify";
-import isSearch from  "../../components/search/search";
+import isSearch from "../../components/search/search";
 export default {
-  name:'login',
+  name: "login",
   components: {
     verify,
   },
@@ -64,8 +64,8 @@ export default {
     console.log(this.$md5("hello"));
   },
   methods: {
-    getcode(val){
-        console.log(val,77777);
+    getcode(val) {
+      console.log(val, 77777);
     },
     change(type) {
       this.logintyoe = type;
@@ -75,34 +75,31 @@ export default {
     },
     //登录
     login() {
-      //跨域通讯
-      // let aa="告诉B项目的内容"
-      // document.getElementById('receivePage').contentWindow.postMessage(aa,"http://127.184.0.6:8011/#/");
-       var wsObj = new WebSocket("ws://192.168.1.32:8888/websocket");   //建立连接
+      //  var wsObj = new WebSocket("ws://192.168.1.32:8888/websocket");   //建立连接
 
-      wsObj.onopen = function () {  //发送请求
-        wsObj.send("Hello WebSocket");
-      };
-      wsObj.onmessage = function (ev) {  //获取后端响应
-      console.log(ev,11);
-      }
-             return
-     this.$router.push({ name: "home" });
-     return
-      if (this.flag == 1) {
-        return;
-      }
-      this.flag = 1;
-      this.$http.get(this.$api.login).then((res) => {
+      // wsObj.onopen = function () {  //发送请求
+      //   wsObj.send("Hello WebSocket");
+      // };
+      // wsObj.onmessage = function (ev) {  //获取后端响应
+      // console.log(ev,11);
+      // }
+      //  this.$router.push({ name: "home" });
+      //  return
+      // if (this.flag == 1) {
+      //   return;
+      // }
+      // if (this.form.name == "" || this.form.psw == "" || this.form.code == "") {
+      //   this.$message.error("登录信息不能留空", 2);
+      //   return;
+      // }
+      // this.flag = 1;
+      this.$http.get('/api/login/getValidateCode').then((res) => {
         console.log(res);
         if (res.status == 200) {
         } else {
         }
       });
-      if (this.form.name == "" || this.form.psw == "" || this.form.code == "") {
-        this.$message.error("登录信息不能留空", 2);
-        return;
-      }
+
       console.log(this.tiptype !== 0);
       if (this.tiptype !== 0) {
         this.$message.error("请输入正确的登录信息", 2);

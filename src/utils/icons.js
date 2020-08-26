@@ -34,4 +34,16 @@ export {
 export {
     default as IeOutline
   } from '@ant-design/icons/lib/outline/IeOutline'
+export {
+    default as ArrowLeftOutline
+  } from '@ant-design/icons/lib/outline/ArrowLeftOutline'
+export {
+    default as LeftOutline
+  } from '@ant-design/icons/lib/outline/LeftOutline'
+export {
+    default as RightOutline
+  } from '@ant-design/icons/lib/outline/RightOutline'
+export {
+    default as DowntOutline
+  } from '@ant-design/icons/lib/outline/DownOutline'
   

@@ -19,16 +19,20 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/login',
       name: 'login',
       component: login,
     },
+    {
+      path: '',
+      redirect: '/home'
+  },
     {
       path: '/home',
       name: 'home',
       redirect: '/home/supervision',
       meta: {
-        title: '资源库'
+        title: '首页'
       },
       component: home,
       children: [
@@ -36,41 +40,59 @@ export default new Router({
           path: 'supervision',
           name: 'supervision',
           meta: {
-            title: '设备库'
+            title: '运行监管'
           },
           component: supervision
-        }
+        },
+        {
+          path: '/logfile',
+          name: 'logfile',
+          component: logfile,
+          meta:{
+            title:"操作日志"
+          }
+        },
+        {
+          path: '/runset',
+          name: 'runset',
+          component: runset,
+          meta:{
+            title:"运行设置"
+          }
+        },
+        {
+          path: '/system',
+          name: 'system',
+          component: system,
+          meta:{
+            title:"系统参数"
+          }
+        },
+        {
+          path: '/taskset',
+          name: 'taskset',
+          component: taskset,
+          meta:{
+            title:"任务设置"
+          }
+        },
+        {
+          path: '/warning',
+          name: 'warning',
+          component: warning,
+          meta:{
+            title:"系统警告"
+          }
+        },
+        {
+          path: '/dataanaly',
+          name: 'dataanaly',
+          component: dataanaly,
+          meta:{
+            title:"数据分析"
+          }
+        },
       ]
-    },
-    {
-      path: '/logfile',
-      name: 'logfile',
-      component: logfile
-    },
-    {
-      path: '/runset',
-      name: 'runset',
-      component: runset
-    },
-    {
-      path: '/system',
-      name: 'system',
-      component: system
-    },
-    {
-      path: '/taskset',
-      name: 'taskset',
-      component: taskset
-    },
-    {
-      path: '/warning',
-      name: 'warning',
-      component: warning
-    },
-    {
-      path: '/dataanaly',
-      name: 'dataanaly',
-      component: dataanaly
     },
     {
       path: '/error404',

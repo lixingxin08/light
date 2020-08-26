@@ -1,12 +1,7 @@
 <template>
   <div id="search">
     <div class="search">
-      <a-input-search
-        placeholder=""
-        enter-button="搜索"
-        size="default"
-        @search="onSearch"
-      />
+      <a-input-search placeholder enter-button="搜索" size="default" @search="onSearch" />
     </div>
     <div class="istree">
       <a-tree
@@ -67,6 +62,22 @@ export default {
     onSearch(value) {
       console.log(value);
     },
+    arrayToTree(arr, parentId) {
+      //  arr 是返回的数据  parendId 父id
+      let temp = [];
+      let treeArr = arr;
+      treeArr.forEach((item, index) => {
+        if (item.parentId == parentId) {
+          if (arrayToTree(treeArr, treeArr[index].id).length > 0) {
+            // 递归调用此函数
+            treeArr[index].children = arrayToTree(treeArr, treeArr[index].id);
+          }
+          temp.push(treeArr[index]);
+        }
+      });
+
+      return temp;
+    },
   },
 };
 </script>
@@ -75,16 +86,15 @@ export default {
   width: 280px;
   height: 100%;
   padding: 20px;
-
 }
 .search {
   width: 240px;
 }
 .istree {
   text-align: left;
-    height: 100%;
-    overflow-x: hidden;
-overflow-y: scroll;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .istree::-webkit-scrollbar {
   display: none;

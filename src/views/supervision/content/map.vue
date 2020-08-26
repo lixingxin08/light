@@ -5,7 +5,6 @@
       :columns="columns"
       :data-source="data"
       class="maplist"
-      :pagination="false"
       bordered
       :customHeaderRow="headstyle"
     >
@@ -106,7 +105,7 @@ export default {
       map.plugin(["AMap.ToolBar", "AMap.MapType"], function () {
         map.addControl(new AMap.ToolBar());
         map.addControl(
-          new AMap.MapType({ showTraffic: false, showRoad: false })
+          new AMap.MapType({ showTraffic: false, showRoad: false },hide())
         );
       });
     },
@@ -141,12 +140,12 @@ export default {
 }
 .maplist {
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: 0;
   width: 470px;
   height: 346px;
-  z-index: 999;
   border-radius: 8px;
+  z-index: 2;
   background-color: #fff;
   overflow: hidden;
 }

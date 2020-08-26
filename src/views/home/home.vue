@@ -7,7 +7,10 @@
         <a-layout-content
           :style="{ margin: '20px 20px', background: '#fff', minHeight: '280px' ,minWidth:'1672px'}"
         >
-          <router-view></router-view>
+        <keep-alive :include="isinclude">
+         <router-view></router-view>
+        </keep-alive>
+         
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -30,6 +33,7 @@ export default {
       collapsed: false,
       searchdata: "",
       localSearchData: "homeHisData",
+      isinclude:"supervision,header,nav",
       test: "tesss",
       // option: {
       //   xAxis: {

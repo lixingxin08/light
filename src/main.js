@@ -12,7 +12,7 @@ import api from './js/api_config.js';
 Vue.prototype.$http = axios;
 Vue.prototype.$api = api;
 import 'ant-design-vue/dist/antd.css';
-import {Layout, Button,Icon,Select,Dropdown,Menu,Input,Tree,TreeSelect,Breadcrumb,Table} from 'ant-design-vue';
+import { Layout, Button, Icon, Select, Dropdown, Menu, Input, Tree, TreeSelect, Breadcrumb, Table } from 'ant-design-vue';
 Vue.use(Dropdown);
 Vue.use(Layout);
 Vue.use(Button);
@@ -26,7 +26,7 @@ Vue.use(Breadcrumb);
 Vue.use(Table);
 
 import md5 from 'js-md5';
-Vue.prototype.$md5=md5
+Vue.prototype.$md5 = md5
 // const isDebug_mode = process.env.NODE_ENV !== 'production'
 // Vue.config.debug = isDebug_mode
 // Vue.config.devtools = isDebug_mode
@@ -35,15 +35,15 @@ Vue.prototype.$md5=md5
 
 
 // 拦截器
-let instance=axios.create({timeout:10000});
+let instance = axios.create({ timeout: 10000 });
 // instance.defaults.headers.common['Authorization'] = "Bearer " + getCookie("userToken");//携带cookie
 //instance.defaults.withCredentials = true;//让ajax携带cookie
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 instance.interceptors.request.use(
   config => {
-    if (sessionStorage.getItem('token')) { // 若存在token，则每个Http Header都加上token
-      config.headers.Authorization = `token ${sessionStorage.getItem('token')}`
-    }
+    // if (sessionStorage.getItem('token')) { // 若存在token，则每个Http Header都加上token
+    //   config.headers.Authorization = `token ${sessionStorage.getItem('token')}`
+    // }
     return config;
   },
   err => {
@@ -58,24 +58,33 @@ instance.interceptors.response.use(
   error => {
     if (error.response) {
       switch (error.response.status) {
-        case 401:
+        case 404:
           // 返回 401 (未授权) 清除 token 并跳转到登录页面
-          sessionStorage.removeItem('token')
+
           router.replace({
-            path: 'login',
+            path: 'error404',
             query: {
               redirect: router.currentRoute.fullPath
             }
-          });
-          case 404:
-            // 返回 401 (未授权) 清除 token 并跳转到登录页面
+          })
+          case 500:
+          // 返回 401 (未授权) 清除 token 并跳转到登录页面
 
-            router.replace({
-              path: 'error404',
-              query: {
-                redirect: router.currentRoute.fullPath
-              }
-            })
+          router.replace({
+            path: 'error500',
+            query: {
+              redirect: router.currentRoute.fullPath
+            }
+          })
+          case 403:
+          // 返回 401 (未授权) 清除 token 并跳转到登录页面
+
+          router.replace({
+            path: 'error403',
+            query: {
+              redirect: router.currentRoute.fullPath
+            }
+          })
       }
     }
     return Promise.reject(error.response.data) // 返回接口返回的错误信息
