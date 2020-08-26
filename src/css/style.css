@@ -27,6 +27,28 @@
     justify-content: space-between;
     align-items: center;
 }
+.flexrow {
+	display: flex;
+	flex-direction: row;
+}
+
+.flexcolumn {
+	display: flex;
+	flex-direction: column;
+}
+
+.flexac {
+	align-items: center;
+}
+
+.flexjc {
+	justify-content: center;
+	justify-items: center;
+}
+
+.flexsb {
+	justify-content: space-between;
+}
 .table_list{
     background-color: #fff!important;
     color: #666666;
