@@ -1,3 +1,4 @@
+<!-- 设备运行明细 -->
 <template>
   <div>设备运行明细</div>
 </template>

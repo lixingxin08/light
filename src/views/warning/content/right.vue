@@ -1,24 +1,21 @@
 <!-- 警报列表 -->
 <template>
   <div style="width: 100%;">
-<is-head></is-head>
+    <div class="flexrow flexac flexsb">
+      <is-head></is-head>
+      <div class="flexrow flexac"style="margin-right: 10px;">
+        <a-icon type="setting" :style="{ color: '#1890FF',fontSize: '20px' }" style='margin-right: 10px;' />
+        <a-icon type="download" :style="{ color: '#1890FF',fontSize: '20px',}"  />
+      </div>
+
+    </div>
     <div class="flex_b" style="margin-bottom: 10px;">
       <div class="search">
         <a-input-search placeholder="" enter-button="搜索" size="default" />
       </div>
-      <!-- <a-button type="primary">
-        新增模板
-      </a-button> -->
     </div>
-    <a-table :scroll="{  y: 700 }" :locale="locale" :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+    <a-table :scroll="{  y: 700 }" :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
       :columns="columns" :data-source="data" bordered size="small" :pagination="pagination">
-      <template slot="operation" slot-scope="text, record, index">
-        <div class="editable-row-operations">
-          <a style="color: #FF0000;" @click="() => save(record.key)">删除</a>
-          <div style="width: 1px;height: 20px; background: #e5e5e5;"></div>
-          <a @click="() => save(record.key)">编辑</a>
-        </div>
-      </template>
     </a-table>
   </div>
 </template>
@@ -26,49 +23,73 @@
 <script>
   import isHead from './head.vue'
   const columns = [{
-      title: '序号',
+      title: 'No',
       dataIndex: 'key',
-      width: '5%',
       align: 'center',
-      render: (text, record, index) => `${index+1}`,
-      scopedSlots: {
-        customRender: 'key'
-      },
+      ellipsis: true
     }, {
-      title: 'name',
+      title: '所属区域',
       dataIndex: 'name',
       align: 'center',
-      width: '25%',
-      scopedSlots: {
-        customRender: 'name'
-      },
+      ellipsis: true
     },
     {
-      title: 'age',
+      title: '设备类型',
       dataIndex: 'age',
-      width: '15%',
       align: 'center',
-      scopedSlots: {
-        customRender: 'age'
-      },
+      ellipsis: true
     },
     {
-      title: 'address',
+      title: '设备名称',
+      align: 'center',
+      ellipsis: true
+    },
+    {
+      title: '警报类型',
+      align: 'center',
+      ellipsis: true
+    },
+    {
+      title: '警报时间',
+      align: 'center',
+      ellipsis: true
+    }, {
+      title: '警报内容',
       dataIndex: 'address',
-      width: '20%',
       align: 'center',
-      scopedSlots: {
-        customRender: 'address'
-      },
+      ellipsis: true
     },
     {
-      title: 'operation',
-      dataIndex: 'operation',
+      title: '警报状态',
       align: 'center',
-      scopedSlots: {
-        customRender: 'operation'
-      },
+      ellipsis: true
     },
+    {
+      title: '累计天数',
+      align: 'center',
+      ellipsis: true
+    },
+    {
+      title: '工作状态',
+      align: 'center',
+      ellipsis: true
+    },
+    {
+      title: '推送状态',
+      align: 'center',
+      ellipsis: true
+    },
+    {
+      title: '处理时间',
+      align: 'center',
+      ellipsis: true
+    },
+    {
+      title: '操作处理',
+      align: 'center',
+      ellipsis: true
+    },
+
   ];
 
   const data = [];
@@ -82,12 +103,10 @@
   }
   export default {
 
-    components:{
-      isHead :isHead
+    components: {
+      isHead: isHead
     },
     data() {
-      this.cacheData = data.map(item => ({ ...item
-      }));
       return {
         data,
         columns,

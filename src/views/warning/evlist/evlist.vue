@@ -3,8 +3,11 @@
   <div class="content flex_fs" style="background-color: #FFFFFF;">
     <isLeft></isLeft>
     <div class="flexcolumn">
-      <is-head></is-head>
-      <a-table :scroll="{  y: 700 }" :locale="locale" :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+      <div class="flexrow  flexsb flexac">
+        <is-head></is-head>
+        <a-button type="primary" style='margin-right: 10px;'>导出数据</a-button>
+      </div>
+      <a-table :scroll="{  y: 700 }" :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
         :columns="columns" :data-source="data" bordered size="small" :pagination="pagination">
 
       </a-table>
@@ -16,40 +19,41 @@
   import isLeft from '../content/left.vue'
   import isHead from '../content/head.vue'
   const columns = [{
-      title: '序号',
+      title: 'No',
       dataIndex: 'key',
-      width: '5%',
+     width:'50px',
       align: 'center',
-      render: (text, record, index) => `${index+1}`,
-      scopedSlots: {
-        customRender: 'key'
-      },
     }, {
-      title: 'name',
+      title: '所属区域',
       dataIndex: 'name',
       align: 'center',
-      width: '25%',
-      scopedSlots: {
-        customRender: 'name'
-      },
     },
     {
-      title: 'age',
+      title: '设备类型',
       dataIndex: 'age',
-      width: '15%',
       align: 'center',
-      scopedSlots: {
-        customRender: 'age'
-      },
     },
     {
-      title: 'address',
+       title: '事件类型',
       dataIndex: 'address',
-      width: '20%',
       align: 'center',
-      scopedSlots: {
-        customRender: 'address'
-      },
+    },
+    {
+       title: '上报时间',
+      align: 'center',
+    },
+    {
+       title: '警报内容',
+      align: 'center',
+    },
+    {
+       title: '事件状态',
+      align: 'center',
+    }
+    ,
+    {
+       title: '处理时间',
+      align: 'center',
     }
   ];
   const data = [];
@@ -86,6 +90,12 @@
         }
       };
     },
+    methods: {
+      onSelectChange(selectedRowKeys) {
+        console.log('selectedRowKeys changed: ', selectedRowKeys);
+        this.selectedRowKeys = selectedRowKeys;
+      },
+    }
   }
 </script>
 

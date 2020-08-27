@@ -27,7 +27,7 @@
         <a-icon type="down" />
       </a-button>
     </a-dropdown>
-    警报时间:
+    <div style="margin-left: 10px;margin-right: 10px;">警报时间:</div>
 
     <a-date-picker v-model="startValue" :disabled-date="disabledStartDate" show-time format="YYYY-MM-DD HH:mm:ss"
       placeholder="开始时间" @openChange="handleStartOpenChange" />-
@@ -61,6 +61,9 @@
       },
     },
     methods:{
+       handleMenuClick(e) {
+            console.log('click', e);
+          },
       disabledStartDate(startValue) {
         const endValue = this.endValue;
         if (!startValue || !endValue) {

@@ -1,46 +1,49 @@
 <!-- 警报关注 -->
 <template>
-  <div><a-table :scroll="{  y: 700 }" :locale="locale" :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
-        :columns="columns" :data-source="data" bordered size="small" :pagination="pagination">
+  <div>
+    <a-table :scroll="{  y: 700 }" :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+      :columns="columns" :data-source="data" bordered size="small" :pagination="pagination">
+      <template slot="operation" slot-scope="text, record">
 
-      </a-table></div>
+         <a-switch size='small'></a-switch>
+
+      </template>
+    </a-table>
+  </div>
 </template>
 
 <script>
   const columns = [{
-      title: '序号',
+      title: 'No',
       dataIndex: 'key',
-      width: '5%',
+      width: '50px',
       align: 'center',
-      render: (text, record, index) => `${index+1}`,
-      scopedSlots: {
-        customRender: 'key'
-      },
     }, {
-      title: 'name',
+      title: '警报名称',
       dataIndex: 'name',
       align: 'center',
-      width: '25%',
-      scopedSlots: {
-        customRender: 'name'
-      },
     },
     {
-      title: 'age',
+      title: '警报类型',
       dataIndex: 'age',
-      width: '15%',
       align: 'center',
-      scopedSlots: {
-        customRender: 'age'
-      },
     },
     {
-      title: 'address',
+      title: '警报说明',
       dataIndex: 'address',
-      width: '20%',
+      width: '40%',
+      align: 'center',
+    },
+    {
+      title: '警报等级',
+      align: 'center',
+    },
+    {
+      title: '是否关注',
+      dataIndex: 'operation',
       align: 'center',
       scopedSlots: {
-        customRender: 'address'
+        customRender: 'operation'
       },
     }
   ];
@@ -53,7 +56,7 @@
       address: `London Park no. ${i}`,
     });
   }
-  export default{
+  export default {
     data() {
       this.cacheData = data.map(item => ({ ...item
       }));
@@ -62,7 +65,6 @@
         columns,
         selectedRowKeys: [],
         editingKey: '',
-    
         pagination: {
           pageSize: 20, // 默认每页显示数量
           showSizeChanger: true, // 显示可改变每页数量
@@ -72,6 +74,12 @@
         }
       };
     },
+    methods: {
+      onSelectChange(selectedRowKeys) {
+        console.log('selectedRowKeys changed: ', selectedRowKeys);
+        this.selectedRowKeys = selectedRowKeys;
+      },
+    }
   }
 </script>
 

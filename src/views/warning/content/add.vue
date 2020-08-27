@@ -131,24 +131,7 @@
 </script>
 
 <style>
-  .ps_ab {
-    z-index: 9999999;
-    position: absolute;
-    color: rgba(51, 51, 51, 1);
-    font-family: Microsoft YaHei;
-    font-weight: 400;
-    line-height: 14px;
-  }
 
-  .ps_flex {
-    width: 800px;
-    position: fixed;
-    left: 30%;
-    padding: 40px;
-    top: 20%;
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0px 0px 16px rgba(87, 174, 255, 1);
-  }
 
   .dialog_title {
     font-size: 24px;
