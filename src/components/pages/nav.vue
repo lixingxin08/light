@@ -8,11 +8,7 @@
           <span>运行监管</span>
         </router-link>
       </a-menu-item>
-      <a-menu-item key="logfile">
-        <router-link to="/logfile">
-          <span>操作日志</span>
-        </router-link>
-      </a-menu-item>
+     
       <a-menu-item key="runset">
         <!-- <a-icon type="upload" /> -->
         <router-link to="/runset">
@@ -64,6 +60,11 @@
           <span>数据分析</span>
         </router-link>
       </a-menu-item>
+	  <a-menu-item key="logfile">
+	    <router-link to="/logfile">
+	      <span>操作日志</span>
+	    </router-link>
+	  </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>

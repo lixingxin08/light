@@ -3,18 +3,15 @@
   <div class="content flex_fs" style="background-color: #FFFFFF;">
     <isLeft></isLeft>
     <is-right ></is-right>
-    <is-add v-if="isShowAdd"></is-add>
   </div>
 </template>
 <script>
   import isLeft from './content/left.vue'
   import isRight from './content/right.vue'
-  import isAdd from './content/add.vue'
   export default {
     components: {
       isRight,
-      isLeft,
-      isAdd
+      isLeft
     },
     data() {
       return {
