@@ -14,6 +14,12 @@ const transfer = () => import('@/views/warning/transfer/transfer') //转警设�
 
 
 const dataanaly = () => import('@/views/dataAnalysis/dataanaly') //数据分析
+const equipmentdetails = () => import('@/views/dataAnalysis/equipmentDetails/equipmentdetail') //电表运行数据
+const terminaldata = () => import('@/views/dataAnalysis/terminalData/terminaldata') //终端运行数据
+const terminaldetails = () => import('@/views/dataAnalysis/terminalDetails/terminaldetails') //终端运行明细
+const watthourmeter = () => import('@/views/dataAnalysis/wattHourMeter/watthourmeter') //终端运行明细
+
+
 const logfile = () => import('@/views/logFile/logfile') //操作日志
 
 const system = () => import('@/views/system/system')//系统参数
@@ -128,6 +134,39 @@ export default new Router({
           component: dataanaly,
           meta:{
             title:"数据分析"
+          }
+        },
+        {
+          path: '/dataanaly/equipmentdetails',
+          name: 'equipmentdetails',
+          component: equipmentdetails,
+          meta:{
+            title:"设备运行明细"
+          }
+        },
+        {
+          path: '/dataanaly/terminaldata',
+          name: 'terminaldata',
+          component: terminaldata,
+          meta:{
+            title:"终端运行数据"
+          }
+        },
+        {
+          path: '/dataanaly/terminaldetails',
+          name: 'terminaldetails',
+          component: terminaldetails,
+          meta:{
+            title:"终端运行明细"
+          }
+        },
+        ,
+        {
+          path: '/dataanaly/watthourmeter',
+          name: 'watthourmeter',
+          component: watthourmeter,
+          meta:{
+            title:"电表运行数据"
           }
         },
       ]

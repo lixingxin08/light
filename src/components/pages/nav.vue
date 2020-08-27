@@ -8,7 +8,7 @@
           <span>运行监管</span>
         </router-link>
       </a-menu-item>
-     
+
       <a-menu-item key="runset">
         <!-- <a-icon type="upload" /> -->
         <router-link to="/runset">
@@ -54,17 +54,42 @@
           </router-link>
         </a-menu-item>
       </a-sub-menu>
-      <a-menu-item key="dataanaly">
-        <!-- <a-icon type="upload" /> -->
-        <router-link to="/dataanaly">
-          <span>数据分析</span>
+      <a-sub-menu key="dataanaly" title="数据分析">
+        <a-menu-item key="watthourmeter">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/dataanaly/watthourmeter">
+            <span>电表运行数据</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="terminaldata">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/dataanaly/terminaldata">
+            <span>终端运行数据</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="terminaldetails">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/dataanaly/terminaldetails">
+            <span>终端运行明细</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="equipmentdetails">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/dataanaly/equipmentdetails">
+            <span>设备运行明细</span>
+          </router-link>
+        </a-menu-item>
+      </a-sub-menu>
+      <a-menu-item key="logfile">
+        <router-link to="/logfile">
+          <span>操作日志</span>
         </router-link>
       </a-menu-item>
-	  <a-menu-item key="logfile">
-	    <router-link to="/logfile">
-	      <span>操作日志</span>
-	    </router-link>
-	  </a-menu-item>
+      <a-menu-item key="system">
+        <router-link to="/system">
+          <span>系统参数</span>
+        </router-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
