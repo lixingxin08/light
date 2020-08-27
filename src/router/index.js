@@ -7,6 +7,12 @@ const supervision = () => import('@/views/supervision/supervision') //运行监�
 const runset = () => import('@/views/runset/runset') //运行设置
 const taskset = () => import('@/views/taskset/taskset') //任务设置
 const warning = () => import('@/views/warning/warning') //系统警告
+const evlist = () => import('@/views/warning/evlist/evlist') //事件列表
+const police = () => import('@/views/warning/police/police') //警报关注
+const push = () => import('@/views/warning/push/push') //推送设置
+const transfer = () => import('@/views/warning/transfer/transfer') //转警设置
+
+
 const dataanaly = () => import('@/views/dataAnalysis/dataanaly') //数据分析
 const logfile = () => import('@/views/logFile/logfile') //操作日志
 
@@ -82,6 +88,38 @@ export default new Router({
           component: warning,
           meta:{
             title:"系统警告"
+          }
+        },
+        {
+          path: '/warning/evlist',
+          name: 'evlist',
+          component: evlist,
+          meta:{
+            title:"警报列表"
+          }
+        },
+        {
+          path: '/warning/police',
+          name: 'police',
+          component: police,
+          meta:{
+            title:"警报关注"
+          }
+        },
+        {
+          path: '/warning/push',
+          name: 'push',
+          component: push,
+          meta:{
+            title:"推送设置"
+          }
+        },
+        {
+          path: '/warning/transfer',
+          name: 'transfer',
+          component: transfer,
+          meta:{
+            title:"转警设置"
           }
         },
         {

@@ -25,12 +25,39 @@
           <span>任务设置</span>
         </router-link>
       </a-menu-item>
-      <a-menu-item key="warning">
-        <!-- <a-icon type="upload" /> -->
-        <router-link to="/warning">
-          <span>系统警告</span>
-        </router-link>
-      </a-menu-item>
+
+      <a-sub-menu key="warning" title="系统警告">
+        <a-menu-item key="warning">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/warning">
+            <span>警报列表</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="evlist">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/warning/evlist">
+            <span>事件列表</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="police">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/warning/police">
+            <span>警报关注</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="push">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/warning/push">
+            <span>推送设置</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="transfer">
+          <!-- <a-icon type="upload" /> -->
+          <router-link to="/warning/transfer">
+            <span>转警设置</span>
+          </router-link>
+        </a-menu-item>
+      </a-sub-menu>
       <a-menu-item key="dataanaly">
         <!-- <a-icon type="upload" /> -->
         <router-link to="/dataanaly">
@@ -41,10 +68,10 @@
   </a-layout-sider>
 </template>
 <script>
-export default {
-  name:"isnav",
-  props: {
-    iscollapsed: Boolean,
-  },
-};
+  export default {
+    name: "isnav",
+    props: {
+      iscollapsed: Boolean,
+    },
+  };
 </script>
