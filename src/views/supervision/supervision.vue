@@ -38,10 +38,12 @@ export default {
 <style  scoped>
 .supervisionhome {
   height: 9.6rem;
+  
 }
 .content {
   width: 100%;
   height: 8.6rem;
+  
   position: relative;
 }
 .changlist {

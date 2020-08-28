@@ -10,7 +10,7 @@
         <keep-alive :include="isinclude">
          <router-view></router-view>
         </keep-alive>
-         
+
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -81,6 +81,7 @@ export default {
 <style>
 #home {
   height: 100%;
+  background-color: #FFFFFF;
 }
 #components-layout-demo-custom-trigger {
   height: 100%;

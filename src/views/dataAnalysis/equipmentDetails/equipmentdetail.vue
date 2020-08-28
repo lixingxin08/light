@@ -1,4 +1,4 @@
-<!-- 电表运行数据 -->
+<!-- 设备运行明细 -->
 <template>
   <div class="flexrow" style="background-color: #FFFFFF;">
     <is-left></is-left>
