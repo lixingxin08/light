@@ -70,3 +70,11 @@ export {
   default as DownloadOutline
 }
 from '@ant-design/icons/lib/outline/DownloadOutline'
+export {
+  default as MinusCircleOutline
+}
+from '@ant-design/icons/lib/outline/MinusCircleOutline'
+export {
+  default as CloseOutline
+}
+from '@ant-design/icons/lib/outline/CloseOutline'

@@ -22,7 +22,7 @@
 
 <script>
   import isHead from './head.vue'
-  const columns = [{
+  const columns = [{//table 标题 数据
       title: 'No',
       dataIndex: 'key',
       align: 'center',
@@ -104,20 +104,18 @@
   export default {
 
     components: {
-      isHead: isHead
+      isHead: isHead//头部view
     },
     data() {
       return {
-        data,
-        columns,
-        selectedRowKeys: [],
-        editingKey: '',
-
+        data,//table list 数据
+        columns,//table 标题数据
+        selectedRowKeys: [],//选中的key值
         pagination: {
           pageSize: 20, // 默认每页显示数量
           showSizeChanger: true, // 显示可改变每页数量
           pageSizeOptions: ['10', '20', '30', '40'], // 每页数量选项
-          showQuickJumper: true,
+          showQuickJumper: true,//是否展示跳转
           showSizeChange: (current, pageSize) => this.pageSize = pageSize, // 改变每页数量时更新显示
         }
       };
@@ -129,62 +127,13 @@
     },
 
     methods: {
-
-      start() {
-        this.loading = true;
-        // ajax request after empty completing
-        setTimeout(() => {
-          this.loading = false;
-          this.selectedRowKeys = [];
-        }, 1000);
-      },
+      /* 
+      选择table item 回调
+      @param selcetedRowKeys 选中的key值
+      */
       onSelectChange(selectedRowKeys) {
         console.log('selectedRowKeys changed: ', selectedRowKeys);
         this.selectedRowKeys = selectedRowKeys;
-      },
-      handleChange(value, key, column) {
-        const newData = [...this.data];
-        const target = newData.filter(item => key === item.key)[0];
-        if (target) {
-          target[column] = value;
-          this.data = newData;
-        }
-      },
-      edit(key) {
-        const newData = [...this.data];
-        const target = newData.filter(item => key === item.key)[0];
-        this.editingKey = key;
-        if (target) {
-          target.editable = true;
-          this.data = newData;
-        }
-      },
-      onSelectChange(selectedRowKeys) {
-        console.log('selectedRowKeys changed: ', selectedRowKeys);
-        this.selectedRowKeys = selectedRowKeys;
-      },
-      save(key) {
-        const newData = [...this.data];
-        const newCacheData = [...this.cacheData];
-        const target = newData.filter(item => key === item.key)[0];
-        const targetCache = newCacheData.filter(item => key === item.key)[0];
-        if (target && targetCache) {
-          delete target.editable;
-          this.data = newData;
-          Object.assign(targetCache, target);
-          this.cacheData = newCacheData;
-        }
-        this.editingKey = '';
-      },
-      cancel(key) {
-        const newData = [...this.data];
-        const target = newData.filter(item => key === item.key)[0];
-        this.editingKey = '';
-        if (target) {
-          Object.assign(target, this.cacheData.filter(item => key === item.key)[0]);
-          delete target.editable;
-          this.data = newData;
-        }
       },
     },
 

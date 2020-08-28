@@ -53,17 +53,32 @@
       }
     },
     watch: {
+      /*
+      监听事件选择器
+      @param  val 选中的开始时间
+      */
       startValue(val) {
         console.log('startValue', val);
       },
+      /*
+      监听事件选择器
+      @param  val 选中的结束时间
+      */
       endValue(val) {
         console.log('endValue', val);
       },
     },
     methods:{
+      /* 
+      菜单选中回调
+      */
        handleMenuClick(e) {
             console.log('click', e);
-          },
+      },
+      /* 
+      选中开始时间
+      @param startValue 开始时间值
+      */
       disabledStartDate(startValue) {
         const endValue = this.endValue;
         if (!startValue || !endValue) {
@@ -71,6 +86,10 @@
         }
         return startValue.valueOf() > endValue.valueOf();
       },
+      /* 
+      选中结束时间
+      @param  endValue 结束事件值
+      */
       disabledEndDate(endValue) {
         const startValue = this.startValue;
         if (!endValue || !startValue) {
@@ -78,11 +97,19 @@
         }
         return startValue.valueOf() >= endValue.valueOf();
       },
+      /* 
+      打开开始时间选中器
+      @param  open  是否打开
+      */
       handleStartOpenChange(open) {
         if (!open) {
           this.endOpen = true;
         }
       },
+      /* 
+      打开结束时间选择器
+      @param open 是否打开
+      */
       handleEndOpenChange(open) {
         this.endOpen = open;
       },

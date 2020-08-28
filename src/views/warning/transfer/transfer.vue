@@ -10,15 +10,15 @@
         <a-switch size='small'></a-switch>
       </template>
       <template slot="operation" slot-scope="text, record">
-        <a href="#" style='font-size: 12px;'>编辑</a>
+        <a href="#" style='font-size: 12px;' @click="editPolice(item)">编辑</a>
       </template>
     </a-table>
- <is-transfer></is-transfer>
+    <is-edit-police v-show="isShowEditPolice" :policeInfo="dd" @closeEditPolice="closeEditPolice"></is-edit-police>
   </div>
 </template>
 
 <script>
-  import isTransfer from './editpolice.vue'
+  import isEditPolice from './editpolice.vue'
   const columns = [{
       title: 'No',
       dataIndex: 'key',
@@ -85,17 +85,17 @@
     });
   }
   export default {
-    components:{
-      isTransfer:isTransfer
+    components: {
+      isEditPolice: isEditPolice
     },
     data() {
       this.cacheData = data.map(item => ({ ...item
       }));
       return {
-        data,
-        columns,
-        selectedRowKeys: [],
-        editingKey: '',
+        data, //table 数据
+        columns, //table 标题
+        isShowEditPolice: false, //是否展示编辑框
+        selectedRowKeys: [], //选中的key
         pagination: {
           pageSize: 20, // 默认每页显示数量
           showSizeChanger: true, // 显示可改变每页数量
@@ -106,16 +106,16 @@
       };
     },
     methods: {
-      onSelectChange(selectedRowKeys) {
+      onSelectChange(selectedRowKeys) { //选中item 事件
         console.log('selectedRowKeys changed: ', selectedRowKeys);
         this.selectedRowKeys = selectedRowKeys;
       },
-      confirm(e) {
-        console.log(e);
+      editPolice(item) { //编辑报警事件
+        this.isShowEditPolice = !this.isShowEditPolice
       },
-      cancel(e) {
-        console.log(e);
-      },
+      closeEditPolice() {
+         this.isShowEditPolice = !this.isShowEditPolice
+      }
     }
   }
 </script>
